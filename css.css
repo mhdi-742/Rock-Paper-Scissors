@@ -1,6 +1,5 @@
 h1{
     text-align:  center;
-    margin-bottom: 30px;
   }
   .buttons{
     display: flex;
@@ -51,14 +50,31 @@ h1{
       height:100%;
       text-align: center;
     }
-    .reset{
+    .reset,.auto-play{
       height: 30px;
       width: 100px;
       border-radius: 0;
       margin:0;
     }
-    .rr{
+    .rr,.ap{
       display: flex;
       align-items: center;
       justify-content: center;
     }
+    .last{
+      display: flex;
+      gap:20px;
+      align-items: center;
+      justify-content: center;
+      margin-top: 10px;
+      height:150px;
+    }
+    .scc,.winner{
+      height:20px;
+      margin:0;
+    }
+   .sss{
+    height:100px;
+    margin-bottom: 10px;
+   }
+   

@@ -2,6 +2,7 @@ const ss=document.querySelector('.score');
             const chc=document.querySelector('.option1');
             const chh=document.querySelector('.option2');
             const result=document.querySelector('.winner');
+            const ap=document.querySelector('.auto-play');
       const score={
         wins:0,
         looses:0,
@@ -68,22 +69,40 @@ const ss=document.querySelector('.score');
             score.wins++;
           }
         }
-        
-          ss.innerHTML=`<h1>You: ${score.wins} , Computer: ${score.looses} , Tie: ${score.ties}</h1>`;
-        
-        function comp()
-        {
-            let i=Math.random();
-            if(i<1/3)
-              {chc.innerHTML="COMPUTER:<br><br><img src='rock-emoji.png'>"; 
-              return "rock";}
-            else if(i<2/3)
-              {chc.innerHTML="COMPUTER:<br><br><img src='paper-emoji.png'>";
-                return "paper";}
-            else 
-               {chc.innerHTML="COMPUTER:<br><br><img src='scissors-emoji.png'>"
-                return "sc";}
-            return;
-        }
-       localStorage.setItem('score',JSON.stringify(score));
+          ss.innerHTML=`You: ${score.wins} , Computer: ${score.looses} , Tie: ${score.ties}`;
+    }
+     
+    function comp()
+    {
+        let i=Math.random();
+        if(i<1/3)
+          {chc.innerHTML="COMPUTER:<br><br><img src='rock-emoji.png'>"; 
+          return "rock";}
+        else if(i<2/3)
+          {chc.innerHTML="COMPUTER:<br><br><img src='paper-emoji.png'>";
+            return "paper";}
+        else 
+           {chc.innerHTML="COMPUTER:<br><br><img src='scissors-emoji.png'>"
+            return "sc";}
+        return;
+    }
+   localStorage.setItem('score',JSON.stringify(score));
+   let flag=true;
+   let id;
+    function autoplay()
+    {
+      if(flag){
+       id=setInterval(()=>{
+        let h=comp();
+        play(h);
+       },1000
+       );
+       ap.innerHTML="STOP";
+       flag=false;
+      }
+      else{
+        clearInterval(id);
+        ap.innerHTML="AUTOPLAY";
+        flag=true;
+      }
     }
